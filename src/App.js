@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+const { getValue } = require("./utils");
 
 function App() {
+  const [result, setResult] = useState("");
+  const [mathOperation, setMathOperation] = useState("");
+  let numbers = [];
+  let naturalNumbers = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  let operators = ["%", "/", "*", "+", "-"];
+  let functions = ["C", "+/-", "="];
+
+  function getMathOperation(value) {
+    if (naturalNumbers.includes(value) || operators.includes(value)) {
+      if (value != "=") numbers.push(value);
+    }
+    setMathOperation(numbers.join(""));
+  }
+
+  function extract() {
+    let allButtons = document.querySelectorAll("button");
+
+    for (let button of allButtons) {
+      button.addEventListener("click", (e) =>
+        getMathOperation(getValue(e.target.value))
+      );
+    }
+  }
+  window.addEventListener("load", extract);
   return (
     <div className="main">
       <header className="main-header">
@@ -10,8 +35,8 @@ function App() {
 
       <div className="content">
         <div className="display">
-          <div className="calc">3.50 * 100.25</div>
-          <div className="result">358.875</div>
+          <div className="calc">{mathOperation}</div>
+          <div className="result">{result}</div>
         </div>
 
         <div className="keys">
