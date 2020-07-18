@@ -1,0 +1,91 @@
+:root {
+  --light-color: #fff;
+  --dark-color: #222;
+  --light-text-color: #000;
+  --dark-text-color: #fff;
+  --secundary-color: orange;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.main-header {
+  padding: 16px;
+  box-shadow: 0px 0px 0px 1px #ccc;
+  text-align: center;
+}
+.main-header h1 {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 40%;
+  max-width: 285px;
+  margin-top: 64px;
+  background-color: var(--light-color);
+}
+.display {
+  border-radius: 16px 16px 0 0;
+  margin: 16px;
+  margin-top: 0;
+  padding: 8px;
+  background-color: #f5f5f5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.display .calc {
+  font-size: 16px;
+  color: #d3d3d3;
+  margin: 8px;
+}
+.display .result {
+  font-size: 32px;
+}
+.keys {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+button {
+  outline: none;
+  margin: 4px;
+  padding: 16px;
+  width: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  color: var(--light-text-color);
+}
+button:hover {
+  background-color: #f5f5f5;
+}
+.grey {
+  color: #ccc;
+}
+.grey:hover {
+  background-color: #ccc;
+  color: #f5f5f5;
+}
+.orange {
+  color: var(--secundary-color);
+}
+.keys button.equal {
+  background-color: var(--secundary-color);
+  color: var(--light-color);
+  margin-left: 60px;
+}
+.equal:hover {
+  color: var(--secundary-color);
+}
