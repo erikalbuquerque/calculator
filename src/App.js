@@ -12,9 +12,15 @@ function App() {
 
   function getMathOperation(value) {
     if (naturalNumbers.includes(value) || operators.includes(value)) {
-      if (value != "=") numbers.push(value);
+      if (value !== "=") numbers.push(value);
+      setMathOperation(numbers.join(""));
     }
-    setMathOperation(numbers.join(""));
+    if (value === "C") erased();
+  }
+
+  function erased() {
+    numbers = [];
+    setMathOperation("");
   }
 
   function extract() {
@@ -40,7 +46,7 @@ function App() {
         </div>
 
         <div className="keys">
-          <button className="grey" value="c">
+          <button className="grey" value="C">
             C
           </button>
           <button className="grey" value="+/-">
