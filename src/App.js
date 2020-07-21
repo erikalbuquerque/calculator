@@ -7,20 +7,23 @@ function App() {
   const [mathOperation, setMathOperation] = useState("");
   let numbers = [];
   let naturalNumbers = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  let operators = ["%", "/", "*", "+", "-"];
-  //let functions = ["C", "+/-", "="];
+  let operators = ["%", "/", "*", "+", "-", "+/-"];
+  //let functions = ["C", "="];
 
   function getMathOperation(value) {
+    if (value === "C") erased();
+    if (value === "=") calculate(numbers);
+
     if (naturalNumbers.includes(value) || operators.includes(value)) {
       if (value !== "=") numbers.push(value);
       setMathOperation(numbers.join(""));
     }
-    if (value === "C") erased();
-    if (value === "=") calculate(numbers);
   }
 
   function calculate(numbers) {
-    setResult(eval(numbers.join("")));
+    let operation = numbers.join("");
+    let resolve = eval(operation);
+    setResult(resolve);
   }
 
   function erased() {
@@ -29,7 +32,7 @@ function App() {
     setMathOperation("");
   }
 
-  function extract() {
+  function handleClickButtons() {
     let allButtons = document.querySelectorAll("button");
 
     for (let button of allButtons) {
@@ -38,7 +41,7 @@ function App() {
       );
     }
   }
-  window.addEventListener("load", extract);
+  window.addEventListener("load", handleClickButtons);
   return (
     <div className="main">
       <header className="main-header">
