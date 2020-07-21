@@ -8,7 +8,7 @@ function App() {
   let numbers = [];
   let naturalNumbers = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let operators = ["%", "/", "*", "+", "-"];
-  let functions = ["C", "+/-", "="];
+  //let functions = ["C", "+/-", "="];
 
   function getMathOperation(value) {
     if (naturalNumbers.includes(value) || operators.includes(value)) {
@@ -16,10 +16,16 @@ function App() {
       setMathOperation(numbers.join(""));
     }
     if (value === "C") erased();
+    if (value === "=") calculate(numbers);
+  }
+
+  function calculate(numbers) {
+    setResult(eval(numbers.join("")));
   }
 
   function erased() {
     numbers = [];
+    setResult("");
     setMathOperation("");
   }
 
