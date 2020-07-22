@@ -7,17 +7,15 @@ function App() {
   const [mathOperation, setMathOperation] = useState("");
   let numbers = [];
   let naturalNumbers = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  let operators = ["%", "/", "*", "+", "-", "+/-"];
+  let operators = ["%", "/", "*", "+", "-", "+/-", "."];
   //let functions = ["C", "="];
-  
+
   function roleOfOperators(value) {
     if (value === "C") erased();
     if (value === "=") calculate(numbers);
   }
 
   function getMathOperation(value) {
-    //if (value === "C") erased();
-    //if (value === "=") calculate(numbers);
     roleOfOperators(value);
 
     if (naturalNumbers.includes(value) || operators.includes(value)) {
@@ -28,7 +26,9 @@ function App() {
 
   function calculate(numbers) {
     let operation = numbers.join("");
+
     let resolve = eval(operation);
+
     setResult(resolve);
   }
 
@@ -95,6 +95,7 @@ function App() {
             00
           </button>
           <button value="0">0</button>
+          <button value=".">,</button>
           <button className="equal" value="=">
             =
           </button>
