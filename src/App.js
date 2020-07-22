@@ -19,6 +19,9 @@ function App() {
     roleOfOperators(value);
 
     if (naturalNumbers.includes(value) || operators.includes(value)) {
+      if (numbers.length == 0 && operators.includes(value)) {
+        return;
+      }
       if (value !== "=") numbers.push(value);
       setMathOperation(numbers.join(""));
     }

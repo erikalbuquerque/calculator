@@ -92,7 +92,7 @@ button:hover {
   color: var(--light-color);
   margin-left: 5px;
 }
-.equal:hover {
+.keys button.equal:hover {
   background-color: #dbdbdb;
   color: orange;
 }
