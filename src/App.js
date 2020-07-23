@@ -15,7 +15,7 @@ function App() {
     if (value === "=") calculate(numbers);
   }
 
-  function getMathOperation(value) {
+  function validateMathOperation(value) {
     roleOfOperators(value);
     //numbers[0] === "00"
 
@@ -51,7 +51,7 @@ function App() {
 
     for (let button of allButtons) {
       button.addEventListener("click", (e) =>
-        getMathOperation(getValue(e.target.value))
+        validateMathOperation(getValue(e.target.value))
       );
     }
   }
