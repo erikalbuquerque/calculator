@@ -90,7 +90,6 @@ button:hover {
 .keys button.equal {
   background-color: var(--secundary-color);
   color: var(--light-color);
-  margin-left: 5px;
 }
 .keys button.equal:hover {
   background-color: #dbdbdb;

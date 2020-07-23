@@ -17,12 +17,14 @@ function App() {
 
   function getMathOperation(value) {
     roleOfOperators(value);
+    //numbers[0] === "00"
 
     if (naturalNumbers.includes(value) || operators.includes(value)) {
-      if (numbers.length == 0 && operators.includes(value)) {
+      if (numbers.length === 0 && operators.includes(value)) {
         return;
       }
       if (value !== "=") numbers.push(value);
+
       setMathOperation(numbers.join(""));
     }
   }
@@ -33,11 +35,14 @@ function App() {
     let resolve = eval(operation);
 
     setResult(resolve);
+    console.log(numbers);
   }
 
   function erased() {
     numbers = [];
+
     setResult("");
+
     setMathOperation("");
   }
 
@@ -50,7 +55,9 @@ function App() {
       );
     }
   }
+
   window.addEventListener("load", handleClickButtons);
+
   return (
     <div className="main">
       <header className="main-header">
@@ -94,10 +101,10 @@ function App() {
           <button className="orange" value="-">
             -
           </button>
-          <button className="grey" value="00">
-            00
+
+          <button value="0" style={{ marginLeft: "65px" }}>
+            0
           </button>
-          <button value="0">0</button>
           <button value=".">,</button>
           <button className="equal" value="=">
             =
