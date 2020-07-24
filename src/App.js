@@ -17,16 +17,18 @@ function App() {
 
   function validateMathOperation(value) {
     roleOfOperators(value);
-    //numbers[0] === "00"
-
     if (naturalNumbers.includes(value) || operators.includes(value)) {
       if (numbers.length === 0 && operators.includes(value)) {
         return;
       }
       if (value !== "=") numbers.push(value);
-
+      limitsTheAmountOfZero(numbers);
       setMathOperation(numbers.join(""));
     }
+  }
+
+  function limitsTheAmountOfZero(numbers) {
+    if (numbers.includes(numbers[0]) && numbers[1] === "0") numbers.splice(1);
   }
 
   function calculate(numbers) {
@@ -35,7 +37,6 @@ function App() {
     let resolve = eval(operation);
 
     setResult(resolve);
-    console.log(numbers);
   }
 
   function erased() {
