@@ -6,7 +6,7 @@ function App() {
   const [result, setResult] = useState("");
   const [mathOperation, setMathOperation] = useState("");
   let numbers = [];
-  let naturalNumbers = ["00", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  let naturalNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let operators = ["%", "/", "*", "+", "-", "+/-", "."];
   //let functions = ["C", "="];
 
@@ -17,18 +17,23 @@ function App() {
 
   function validateMathOperation(value) {
     roleOfOperators(value);
-    if (naturalNumbers.includes(value) || operators.includes(value)) {
-      if (numbers.length === 0 && operators.includes(value)) {
-        return;
-      }
-      if (value !== "=") numbers.push(value);
-      limitsTheAmountOfZero(numbers);
-      setMathOperation(numbers.join(""));
-    }
+
+    if (numbers.length === 0 && operators.includes(value)) return;
+
+    if (value !== "=" && value !== "C") numbers.push(value);
+
+    removeLeadingZero(numbers);
+
+    setMathOperation(numbers.join(""));
   }
 
-  function limitsTheAmountOfZero(numbers) {
-    if (numbers.includes(numbers[0]) && numbers[1] === "0") numbers.splice(1);
+  //limitsTheAmountOfZero
+  function removeLeadingZero(numbers) {
+    if (
+      numbers[0] === "0" &&
+      (numbers[1] === "0" || naturalNumbers.includes(numbers[1]))
+    )
+      numbers.shift();
   }
 
   function calculate(numbers) {
